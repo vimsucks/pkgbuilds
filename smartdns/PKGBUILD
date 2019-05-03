@@ -1,0 +1,32 @@
+# Maintainer: Vimsucks <dev@vimsucks.com>
+
+pkgname=smartdns
+pkgver=1.2019.04.25
+subpkgver=2140
+releasename="Release24"
+pkgrel=3
+pkgdesc="smart dns server"
+license=('Apache')
+url="https://github.com/fatedier/frp"
+arch=('x86_64' 'i686')
+source=()
+source_x86_64=("https://github.com/pymumu/smartdns/releases/download/${releasename}/smartdns.${pkgver}-${subpkgver}.x86_64.tar.gz")
+source_i686=("https://github.com/pymumu/smartdns/releases/download/${releasename}/smartdns.${pkgver}-${subpkgver}.x86.tar.gz")
+md5sums_x86_64=('8cdad95c9244654f9240d7aba3214b01')
+md5sums_i686=('d7761e0aee6c9c9abbc77773fcd9bae2')
+backup=(etc/smartdns/smartdns.conf)
+
+package() {
+	smartdnsdir=$srcdir/smartdns
+
+	sed -i 's/sbin/bin/g' $smartdnsdir/systemd/smartdns.service
+
+	install -d $pkgdir/usr/bin
+	install -d $pkgdir/etc/{smartdns,default}
+	install -d $pkgdir/usr/lib/systemd/system
+
+	install -m640 $smartdnsdir/etc/smartdns/smartdns.conf $pkgdir/etc/smartdns/smartdns.conf
+	install -m640 $smartdnsdir/etc/default/smartdns $pkgdir/etc/default/smartdns
+	install -m756 $smartdnsdir/src/smartdns $pkgdir/usr/bin/smartdns
+	install -m644 $smartdnsdir/systemd/smartdns.service $pkgdir/usr/lib/systemd/system/smartdns.service
+} 

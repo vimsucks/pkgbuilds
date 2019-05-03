@@ -1,0 +1,16 @@
+pkgbase = smartdns
+	pkgdesc = smart dns server
+	pkgver = 1.2019.04.25
+	pkgrel = 3
+	url = https://github.com/fatedier/frp
+	arch = x86_64
+	arch = i686
+	license = Apache
+	backup = etc/smartdns/smartdns.conf
+	source_x86_64 = https://github.com/pymumu/smartdns/releases/download/Release24/smartdns.1.2019.04.25-2140.x86_64.tar.gz
+	md5sums_x86_64 = 8cdad95c9244654f9240d7aba3214b01
+	source_i686 = https://github.com/pymumu/smartdns/releases/download/Release24/smartdns.1.2019.04.25-2140.x86.tar.gz
+	md5sums_i686 = d7761e0aee6c9c9abbc77773fcd9bae2
+
+pkgname = smartdns
+
